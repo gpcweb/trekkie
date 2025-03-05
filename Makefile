@@ -22,6 +22,9 @@ setup-db:
 	docker-compose exec app bundle exec rake db:migrate RAILS_ENV=test && \
 	docker-compose exec app bundle exec rake db:migrate
 
+seed-db:
+	docker-compose exec app bundle exec rake db:seed
+
 console:
 	docker-compose exec app bundle exec rails console
 
