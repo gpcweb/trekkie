@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Spin up the project:
 
-Things you may want to cover:
+The project has been containerized, so just need docker on your machine and then run:
 
-* Ruby version
+```
+make start
+make setup-db
+make seed-db
+```
 
-* System dependencies
+If you want to play with the API, please refer to the Postman collection sent by email.
 
-* Configuration
+Some design considerations:
 
-* Database creation
+- The return fee is just 1.
+- Negative balance is a possible scenario. This could be improved if we tried to compute at run time or using counter_cache the  number of books a user needs to return when its trying to borrow another book and compare that to remaining balance.
 
-* Database initialization
+````
+(account.balance - ((borrowed_books * RETURN_FEE) + RETURN_FEE) > 0
+````
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Things that need to be improved:
 
-* Deployment instructions
-
-* ...
+- Add more unit tests
+- Add simplecov for code coverage analysis.
+- Add rubocop as a code analyzer  and code formatter.
+- Add swagger docs for api documentation
+- Add rails-erd to generate a diagram.
